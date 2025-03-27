@@ -28,7 +28,7 @@ This repository is just a custom version of the orginal `manim` repository. Ther
 - `manim/mobject/text/text_mobject.py`: There is a single font available. 
 - `manim/scene/scene.py`: The first and last frame of each scene is saved into the `./animations/frames` folder.
 
-IMPORTANT: We excpect that this `manim` version is executed inside the `AI-metaphors`.
+IMPORTANT: We expect that this `manim` version is executed inside `AI-metaphors`.
 
 
 ## Table of Contents:
