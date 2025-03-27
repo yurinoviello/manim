@@ -19,10 +19,17 @@
 </p>
 <hr />
 
-Manim is an animation engine for explanatory math videos. It's used to create precise animations programmatically, as demonstrated in the videos of [3Blue1Brown](https://www.3blue1brown.com/).
 
-> [!NOTE]
-> The community edition of Manim has been forked from 3b1b/manim, a tool originally created and open-sourced by Grant Sanderson, also creator of the 3Blue1Brown educational math videos. While Grant Sanderson’s repository continues to be maintained separately by him, he is not among the maintainers of the community edition. We recommend this version for its continued development, improved features, enhanced documentation, and more active community-driven maintenance. If you would like to study how Grant makes his videos, head over to his repository ([3b1b/manim](https://github.com/3b1b/manim)).
+# !NOTE!
+
+This repository is just a custom version of the orginal `manim` repository. There are just a few changes:
+- `manim/__init__.py`:  Import of additional colors. The `manim_voiceover` package is import by default.
+- `manim/constants.py`: The `DEFAULT_FONT_SIZE` is reduced to 24
+- `manim/mobject/text/text_mobject.py`: There is a single font available. 
+- `manim/scene/scene.py`: The first and last frame of each scene is saved into the `./animations/frames` folder.
+
+IMPORTANT: We excpect that this `manim` version is executed inside the `AI-metaphors`.
+
 
 ## Table of Contents:
 
