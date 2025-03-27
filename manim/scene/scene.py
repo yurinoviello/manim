@@ -15,7 +15,8 @@ import threading
 import time
 import types
 from queue import Queue
-
+from manim import config
+import os
 import srt
 
 from manim.scene.section import DefaultSectionType
@@ -1099,6 +1100,13 @@ class Scene:
             All other keywords are passed to the renderer.
 
         """
+
+        stack = inspect.stack()
+        # The caller is the previous stack frame (index = 1)
+        caller_frame = stack[1]
+        # Extract the name of the calling function
+        prefun = caller_frame.function
+
         # If we are in interactive embedded mode, make sure this is running on the main thread (required for OpenGL)
         if (
             self.interactive_mode
@@ -1136,6 +1144,13 @@ class Scene:
                 duration=subcaption_duration,
                 offset=-run_time + subcaption_offset,
             )
+        if prefun != "wait":
+            try:
+                self.save_frame()
+            except FileNotFoundError:
+                logger.warning(
+                    "Cannot save the frame"
+                )
 
     def wait(
         self,
@@ -1767,3 +1782,11 @@ class Scene:
     def on_mouse_press(self, point, button, modifiers):
         for func in self.mouse_press_callbacks:
             func()
+
+    counter = 0
+    def save_frame(self):
+        file_name = os.path.basename(config['input_file']).split('.')[0]
+        # self.wait()
+        image = self.renderer.camera.get_image()
+        image.save(f"./animations/frames/{file_name}/{str(self.counter).zfill(2)}.png")
+        self.counter += 1

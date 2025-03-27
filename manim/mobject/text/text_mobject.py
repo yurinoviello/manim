@@ -50,6 +50,9 @@ Examples
 from __future__ import annotations
 
 import functools
+import os
+import manimpango
+manimpango.register_font(os.path.join(os.path.dirname(__file__), 'JetBrainsSans-Regular.ttf'))
 
 __all__ = ["Text", "Paragraph", "MarkupText", "register_font"]
 
@@ -450,22 +453,22 @@ class Text(SVGMobject):
         **kwargs,
     ) -> None:
         self.line_spacing = line_spacing
-        if font and warn_missing_font:
-            fonts_list = Text.font_list()
-            # handle special case of sans/sans-serif
-            if font.lower() == "sans-serif":
-                font = "sans"
-            if font not in fonts_list:
-                # check if the capitalized version is in the supported fonts
-                if font.capitalize() in fonts_list:
-                    font = font.capitalize()
-                elif font.lower() in fonts_list:
-                    font = font.lower()
-                elif font.title() in fonts_list:
-                    font = font.title()
-                else:
-                    logger.warning(f"Font {font} not in {fonts_list}.")
-        self.font = font
+        # if font and warn_missing_font:
+        #     fonts_list = Text.font_list()
+        #     # handle special case of sans/sans-serif
+        #     if font.lower() == "sans-serif":
+        #         font = "sans"
+        #     if font not in fonts_list:
+        #         # check if the capitalized version is in the supported fonts
+        #         if font.capitalize() in fonts_list:
+        #             font = font.capitalize()
+        #         elif font.lower() in fonts_list:
+        #             font = font.lower()
+        #         elif font.title() in fonts_list:
+        #             font = font.title()
+        #         else:
+        #             logger.warning(f"Font {font} not in {fonts_list}.")
+        self.font = "JetBrainsSans-Regular.ttf"
         self._font_size = float(font_size)
         # needs to be a float or else size is inflated when font_size = 24
         # (unknown cause)
