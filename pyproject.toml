@@ -52,6 +52,7 @@ dependencies = [
     "tqdm>=4.0.0",
     "typing-extensions>=4.12.0",
     "watchdog>=2.0.0",
+    "manim-voiceover[all]==0.3.7"
 ]
 
 

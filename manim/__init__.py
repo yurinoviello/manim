@@ -98,8 +98,9 @@ from .utils.space_ops import *
 from .utils.tex import *
 from .utils.tex_templates import *
 from .utils.color.SVGNAMES import *
+from voiceover.openai import OpenAIService
 from manim_voiceover import VoiceoverScene
-from manim_voiceover.services.openai import OpenAIService
+
 
 try:
     from IPython import get_ipython
