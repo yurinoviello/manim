@@ -80,6 +80,12 @@ class OpenAIService(SpeechService):
         self.voice = voice
         self.model = model
 
+        # --- THIS IS THE TRITON BYPASS ---
+        # Force the transcription to run on CPU
+        if "device" not in kwargs:
+            kwargs["device"] = "cpu"
+        # ---------------------------------
+
         SpeechService.__init__(self, transcription_model=transcription_model, **kwargs)
 
     def generate_from_text(
